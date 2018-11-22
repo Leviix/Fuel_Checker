@@ -49,7 +49,8 @@ def menu():
 
             elif selector == 5:
                 # except InvalidURL
-                return 'http://None'
+                noreturn = ('http://None?')
+                return noreturn
                 break
             else:
                 print('Input Error: Please select 1 - 5')
