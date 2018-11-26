@@ -1,9 +1,9 @@
 import requests
 import os
-import time
 import feedparser
 from bs4 import BeautifulSoup
 from pprint import pprint
+from time import localtime
 # os.system('clear')
 
 Fuelinfo_today = 'https://www.fuelwatch.wa.gov.au/fuelwatch/fuelWatchRSS?Product=2'
@@ -94,7 +94,15 @@ get_data()
 
 # for entries in fuel_Formatted(grabbed_data).entries:
 
-print('--------------------ENDED HERE--------------------')
+print('--------------------     ENDED    --------------------')
+print(localtime().tm_hour)
+print(localtime().tm_min)
+time = localtime().tm_hour, localtime().tm_min
+print(time)
+
+if time <= '2 29':
+    print('Must wait until 2:30pm for tomorrows fuel prices')
+# if selected_data_set == 2 ==
 
 # print(both_data_sets)
 
