@@ -27,37 +27,38 @@ def menu():
                 print('Getting todays fuel prices...')
                 selected_data_set = Fuelinfo_today
                 return selected_data_set
-                break
+                # break
 
             elif selector == 2:
                 selected_data_set = Fuelinfo_tomorrow
                 print('Getting tomorrows fuel prices...')
                 return selected_data_set
-                break
+                # break
 
             elif selector == 3:
                 print('Getting both fuel prices...')
                 selected_data_set = [Fuelinfo_today, Fuelinfo_tomorrow]
                 return selected_data_set
-                break
+                # break
 
             elif selector == 4:
                 print('Getting Test (localhost) fuel prices...')
                 selected_data_set = FUELTEST
                 return selected_data_set
-                break
+                # break
 
             elif selector == 5:
                 # except InvalidURL
                 noreturn = ('http:///None?')
                 return noreturn
-                break
+                # break
             else:
                 print('Input Error: Please select 1 - 5')
         except ValueError:
             print('Value Error: Please select 1 - 5')
             continue
-
+        except ConnectionError:
+            print('Not connected to the internet, check connection and try again')
 # menu()
 ###
 # print('THIS IS THE PRINT STATEMENT', menu(), "second time maybe #so confused",)
