@@ -61,7 +61,7 @@ def menu():
 # menu()
 ###
 # print('THIS IS THE PRINT STATEMENT', menu(), "second time maybe #so confused",)
-
+both_data_sets = []
 def get_data():
     selected_data_set = menu()
     if selected_data_set == FUELTEST:
@@ -74,7 +74,7 @@ def get_data():
         # return parsed_info
 
     for entries in parsed_info.entries:
-        print(entries.title, entries.address)
+        print(entries.title) #',', entries.address)
         both_data_sets.append(entries.title)
 
 ### change atibute to selected_data_set when menu is working
@@ -87,7 +87,7 @@ def get_data():
 
 ###
 # Sting manipulation
-both_data_sets = []
+
 
 get_data()
 
@@ -97,8 +97,7 @@ get_data()
 print('--------------------     ENDED    --------------------')
 print(localtime().tm_hour)
 print(localtime().tm_min)
-time = localtime().tm_hour, localtime().tm_min
-print(time)
+print(localtime().tm_hour,':',localtime().tm_min)
 
 if time <= '2 29':
     print('Must wait until 2:30pm for tomorrows fuel prices')
