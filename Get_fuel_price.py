@@ -5,13 +5,11 @@ import feedparser
 from bs4 import BeautifulSoup
 from pprint import pprint
 from time import localtime
-# os.system('clear')
 
 Fuelinfo_today = 'https://www.fuelwatch.wa.gov.au/fuelwatch/fuelWatchRSS?Product=2'
 Fuelinfo_tomorrow = 'https://www.fuelwatch.wa.gov.au/fuelwatch/fuelWatchRSS?Product=2&Day=tomorrow'
 FUELTEST = 'file:///Users/leviix/Desktop/Scripts/Python_scripts/Cheap_fuel/Fuelinformation.html'
 
-### selector/menu
 def menu():
     """A menu for the user to interact with, continous until a correct selection has been made"""
     os.system('clear')
