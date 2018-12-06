@@ -65,7 +65,7 @@ def get_data():
         grabbed_data = requests.get(selected_data_set)
         parsed_info = feedparser.parse(grabbed_data.text)
 
-    for entries in parsed_info.entries:
+    for entries in reversed(parsed_info.entries):
         print(entries.title, entries.address)
         combined_sets.append(entries.title)
 
