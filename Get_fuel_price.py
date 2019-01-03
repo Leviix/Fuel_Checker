@@ -8,17 +8,43 @@ from time import localtime
 
 
 
-Fuelinfo_today = 'https://www.fuelwatch.wa.gov.au/fuelwatch/fuelWatchRSS?Product=6'
-Fuelinfo_tomorrow = 'https://www.fuelwatch.wa.gov.au/fuelwatch/fuelWatchRSS?Product=6&Day=tomorrow'
-FUELTEST = 'file:///Users/leviix/Desktop/Scripts/Python_scripts/Cheap_fuel/Fuelinformation.html'
-
-def menu():
-    """A menu for the user to interact with, continous until a correct selection has been made"""
+def prod_Type():
     os.system('clear')
     while True:
         try:
-            print('1: Fuelinfo today, 2: Fuelinfo tomorrow, 3: Both today and tomorrow, 4: TEST (localhost), 5: Quit',)
-            selector = int(input('Select which data set: ',))
+            print('FUEL TYPES AVAILABLE')
+            print('1:91 Petrol, 2:95 Unleaded, 3:98 unleaded, 4:Diesel, 5:LPG, 6:E85, 7:Quit')
+            select = int(input('Please select fuel type: ',))
+            if select == 3:
+                x = 6
+                return x
+            elif select == 6:
+                x = 10
+                return x
+            elif select == 7:
+                sys.exit(0)
+            elif select == select:
+                x = select
+                return x
+            else:
+                print('Input Error: Please select 1 - 7')
+        except ValueError:
+            print('Value Error: Please select 1 - 7')
+            continue
+
+Fuelinfo_today = 'https://www.fuelwatch.wa.gov.au/fuelwatch/fuelWatchRSS?Product={y}'.format(y = prod_Type())
+Fuelinfo_tomorrow = 'https://www.fuelwatch.wa.gov.au/fuelwatch/fuelWatchRSS?Product=6&Day=tomorrow'
+FUELTEST = 'file:///Users/leviix/Desktop/Scripts/Python_scripts/Cheap_fuel/Fuelinformation.html'
+
+
+def menu():
+    """A menu for the user to interact with, continous until a correct selection has been made"""
+
+    while True:
+        try:
+            print('FUEL TABLES AVAILABLE TO VIEW')
+            print('1:Fuelinfo today, 2:Fuelinfo tomorrow, 3:Both today and tomorrow, 4:TEST(localhost), 5:Quit',)
+            selector = int(input('Please select which data set: ',))
 
             if selector == 1:
                 print('Getting todays fuel prices...')
@@ -99,10 +125,10 @@ print(len(data_to_show))
 
 
 print('--------------------     ENDED    --------------------')
-hour = localtime().tm_hour
-minute = localtime().tm_min
-second = localtime().tm_sec
-print('H:', hour, 'M:', minute, 'S:', second )
+H = localtime().tm_hour
+M = localtime().tm_min
+S = localtime().tm_sec
+print('H:{}, S:{}, M:{}'.format(H, M, S))
 
 # if time <= '2 29':
     # print('Must wait until 2:30pm for tomorrows fuel prices')
