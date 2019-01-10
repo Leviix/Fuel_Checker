@@ -5,83 +5,53 @@ import feedparser
 from bs4 import BeautifulSoup
 from pprint import pprint
 from time import localtime
+from Product_Menu import product_Menu as prod_Men
 
 
 
-def prod_Type():
-    os.system('clear')
-    while True:
-        try:
-            print('FUEL TYPES AVAILABLE')
-            print('1:91 Petrol, 2:95 Unleaded, 3:98 unleaded, 4:Diesel, 5:LPG, 6:E85, 7:Quit')
-            select = int(input('Please select fuel type: ',))
-            if select == 3:
-                x = 6
-                return x
-            elif select == 6:
-                x = 10
-                return x
-            elif select == 7:
-                sys.exit(0)
-            elif select == select:
-                x = select
-                return x
-            else:
-                print('Input Error: Please select 1 - 7')
-        except ValueError:
-            print('Value Error: Please select 1 - 7')
-            continue
 
-Fuelinfo_today = 'https://www.fuelwatch.wa.gov.au/fuelwatch/fuelWatchRSS?Product={y}'.format(y = prod_Type())
-Fuelinfo_tomorrow = 'https://www.fuelwatch.wa.gov.au/fuelwatch/fuelWatchRSS?Product=6&Day=tomorrow'
 FUELTEST = 'file:///Users/leviix/Desktop/Scripts/Python_scripts/Cheap_fuel/Fuelinformation.html'
 
 
-def menu():
-    """A menu for the user to interact with, continous until a correct selection has been made"""
+def moded_Url(prod, day):
+    """meant to create and the required urls for both today and tomororw and return it"""
 
-    while True:
-        try:
-            print('FUEL TABLES AVAILABLE TO VIEW')
-            print('1:Fuelinfo today, 2:Fuelinfo tomorrow, 3:Both today and tomorrow, 4:TEST(localhost), 5:Quit',)
-            selector = int(input('Please select which data set: ',))
+    url = 'https://www.fuelwatch.wa.gov.au/fuelwatch/fuelWatchRSS?Product={prod}&Day={day}'
 
-            if selector == 1:
-                print('Getting todays fuel prices...')
-                selected_data_set = Fuelinfo_today
-                return selected_data_set
 
-            elif selector == 2:
-                selected_data_set = Fuelinfo_tomorrow
-                print('Getting tomorrows fuel prices...')
-                return selected_data_set
 
-            elif selector == 3:
-                print('Getting both fuel prices...')
-                selected_data_set = 'both'
-                return selected_data_set
+    modded_url = url.format(prod= , day)
 
-            elif selector == 4:
-                print('Getting Test (localhost) fuel prices...')
-                selected_data_set = FUELTEST
-                return selected_data_set
+    return modded_url
 
-            elif selector == 5:
-                sys.exit(0)
-            else:
-                print('Input Error: Please select 1 - 5')
-        except ValueError:
-            print('Value Error: Please select 1 - 5')
-            continue
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 data_to_show = []
 
+
 def get_data():
-    """The main function being called"""
-    called_data = menu()
-    if called_data == 'both':
-        today_data = requests.get(Fuelinfo_today)
+    """The main function being called.......aka Main"""
+
+    moded_Url(prod=prod_Men(), )
+
+    if  x == 'both':
+        today_data = requests.get(URl)
         today_parsed = feedparser.parse(today_data.text)
         tomorrow_data = requests.get(Fuelinfo_tomorrow)
         tomorrow_parsed = feedparser.parse(tomorrow_data.text)
@@ -111,10 +81,8 @@ def showing(show_this):
             })
 
 
-get_data()
-
 def sort_Price(data_to_show):
-    """sorts any list by the index 'price_of_fuel'"""
+    """sorts any list by the key 'price_of_fuel', meant to work in tangent with sort_Price() function"""
     return data_to_show['Price_of_Fuel']
 
 
@@ -123,6 +91,8 @@ pprint(Show_sorted)
 print(len(data_to_show))
 
 
+get_data()
+
 
 print('--------------------     ENDED    --------------------')
 H = localtime().tm_hour
@@ -130,6 +100,6 @@ M = localtime().tm_min
 S = localtime().tm_sec
 print('H:{}, S:{}, M:{}'.format(H, M, S))
 
-# if time <= '2 29':
+# if time <= '2 30':
     # print('Must wait until 2:30pm for tomorrows fuel prices')
 # if selected_data_set == 2 ==
