@@ -5,7 +5,7 @@ def product_Menu():
     os.system('clear')
     while True:
         Base_url = 'https://www.fuelwatch.wa.gov.au/fuelwatch/fuelWatchRSS?'
-        print('FUEL TYPES AVAILABLE')
+        print(':-----------:-----------: FUEL TYPES AVAILABLE :-----------:-----------:')
         print('1:91 Petrol, 2:95 Unleaded, 3:98 unleaded, 4:Diesel, 5:LPG, 6:E85, 7:Quit')
         options = {1:1,
                 2:2, 3:6,
