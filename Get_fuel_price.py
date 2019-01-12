@@ -73,7 +73,7 @@ print(':-----------:-----------: ENDED HERE :-----------:-----------:')
 H = localtime().tm_hour
 M = localtime().tm_min
 S = localtime().tm_sec
-print('H:{}, S:{}, M:{}'.format(H, M, S))
+print('Time: {}:{}:{}'.format(H, M, S))
 
 # if time <= '2 30':
     # print('Must wait until 2:30pm for tomorrows fuel prices')
