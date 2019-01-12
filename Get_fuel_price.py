@@ -9,9 +9,7 @@ from Product_Menu import product_Menu as prod_Men
 
 
 
-
 FUELTEST = 'file:///Users/leviix/Desktop/Scripts/Python_scripts/Cheap_fuel/Fuelinformation.html'
-
 
 def moded_Url(prod, day):
     """meant to create the required urls for both today and tomororw and return it"""
@@ -21,8 +19,13 @@ def moded_Url(prod, day):
     return modded_url
 
 data_to_show = []
-def showing(show_this):
+def showing(show_this, colour):
     """Function to append to the list 'data_to_show' given an input of desired fuel day(s)"""
+    if colour == Tomorrow:
+
+
+        pass
+
     for entry in show_this:
         data_to_show.append({
             'Store_Name':entry['trading-name'],
@@ -39,29 +42,26 @@ def sort_Price(data_to_show):
     return data_to_show['Price_of_Fuel']
 
 def get_data():
-    """The main function being called.......aka Main"""
+    """The main function being called.......aka Main."""
 
     result_pM = prod_Men()
     day_Z = ['Today', 'Tomorrow']
     today_url = moded_Url(result_pM, day_Z[0])
     tomorrow_url = moded_Url(result_pM, day_Z[1])
-    colour_this = tomorrow_url[-8:]
 
-    today_data = requests.get(today_url)
+    try:
+        today_data = requests.get(today_url)
+        tomorrow_data = requests.get(tomorrow_url)
+    except requests.exceptions.ConnectionError:
+        print('Unabel to connect to the internt.\nPlease check your internet connection and try again.')
+        sys.exit(0)
     today_parsed = feedparser.parse(today_data.text)
-    tomorrow_data = requests.get(tomorrow_url)
-    colour_this = tomorrow_url[-8:]
     tomorrow_parsed = feedparser.parse(tomorrow_data.text)
-
+    colour_this = tomorrow_url[-8:]
     all_parsed = today_parsed.entries + tomorrow_parsed.entries
-    showing(all_parsed)
+    showing(all_parsed, colour_this)
 
 get_data()
-
-
-
-
-
 
 
 Show_sorted = sorted(data_to_show, key=sort_Price, reverse=True)
@@ -70,7 +70,7 @@ print(len(data_to_show))
 
 
 
-print('--------------------     ENDED    --------------------')
+print(':-----------:-----------: ENDED HERE :-----------:-----------:')
 H = localtime().tm_hour
 M = localtime().tm_min
 S = localtime().tm_sec
