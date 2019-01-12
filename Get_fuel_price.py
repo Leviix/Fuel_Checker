@@ -21,9 +21,7 @@ def moded_Url(prod, day):
 data_to_show = []
 def showing(show_this, colour):
     """Function to append to the list 'data_to_show' given an input of desired fuel day(s)"""
-    if colour == Tomorrow:
-
-
+    if colour == 'Tomorrow':
         pass
 
     for entry in show_this:
@@ -53,7 +51,8 @@ def get_data():
         today_data = requests.get(today_url)
         tomorrow_data = requests.get(tomorrow_url)
     except requests.exceptions.ConnectionError:
-        print('Unabel to connect to the internt.\nPlease check your internet connection and try again.')
+        print('\n:----:----: Unabel to connect to the internt :----:----:\
+            \nPlease check your internet connection and try again.\n\n')
         sys.exit(0)
     today_parsed = feedparser.parse(today_data.text)
     tomorrow_parsed = feedparser.parse(tomorrow_data.text)
