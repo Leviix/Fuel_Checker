@@ -2,7 +2,6 @@ import requests
 import os
 import sys
 import feedparser
-from bs4 import BeautifulSoup
 from pprint import pprint
 from time import localtime
 from Product_Menu import product_Menu as prod_Men
