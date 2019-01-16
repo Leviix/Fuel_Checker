@@ -22,5 +22,4 @@ def product_Menu():
         elif chosen == None:
             print('Value Error: Please select 1 - 7')
             continue
-
         return chosen
