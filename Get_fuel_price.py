@@ -63,6 +63,8 @@ def get_data():
 get_data()
 
 
+'''just putting htis here to check my pull/fetch stuff within git so that i cna tyr it on baes computer'''
+
 Show_sorted = sorted(data_to_show, key=sort_Price, reverse=True)
 pprint(Show_sorted)
 print(len(data_to_show))
