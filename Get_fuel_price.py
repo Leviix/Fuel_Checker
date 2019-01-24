@@ -75,10 +75,11 @@ if __name__ == __name__:
 Show_sorted = sorted(data_to_show, key=sort_Price, reverse=True)
 # pprint(Show_sorted)
 
-print(len(data_to_show))
-print(Show_sorted)
 
+pprint(Show_sorted)
+print(len(data_to_show))
 def table_Creation(data):
+
 
     f = open('table.html', 'w')
     table_stuff = '''
@@ -98,17 +99,34 @@ def table_Creation(data):
 
         <tbody>
             <tr>
-                <td>{SN}</td>
-                <td>{P}</td>
-                <td>{A}</td>
-                <td>{L}</td>
-                <td>{D}</td>
+                <td>{sn}</td>
+                <td>{p}</td>
+                <td>{a}</td>
+                <td>{l}</td>
+                <td>{d}</td>
             </tr>
         </tbody>
     </table>
-    '''.format(SN='0', P='0', A='0', L='0', D='0' )
+    '''
+
     for entry in data:
-        print(entry)
+        table_stuff.format(sn=entry['Address'],
+                        p=entry['Price_of_Fuel'],
+                        a=entry['Address'],
+                        l=entry['Address'],
+                        d=entry['Date'])
+    # for entry in data:
+    #     P =+ entry['Price_of_Fuel']
+    # for entry in data:
+    #     A =+ entry['Address']
+    # for entry in data:
+    #     L = entry['Location']
+    # for entry in data:
+    #     D = entry['Date']
+
+
+
+
     title = '''
         <head>
             <title>
@@ -122,11 +140,11 @@ def table_Creation(data):
         <p>Paragraph {}.</p>
     '''.format(data)
 
-    f.write(table_stuff + title + body)
+    f.write(title + table_stuff + body)
     f.close()
 
 
-table_Creation(Show_sorted)
+table_Creation(data_to_show)
 
 
 
